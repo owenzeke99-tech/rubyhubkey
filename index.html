@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ruby Hub Key</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --red: #ff1010;
+    --red-light: #ff5a5a;
+    --red-dark: #870000;
+    --black: #020202;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-family: "Outfit", sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(255, 0, 0, 0.17),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 0% 100%,
+            rgba(130, 0, 0, 0.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(255, 0, 0, 0.08),
+            transparent 25%
+        ),
+        #020202;
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Grid */
+
+.grid {
+    position: absolute;
+    width: 180%;
+    height: 180%;
+
+    left: -40%;
+    top: -20%;
+
+    opacity: 0.22;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 30, 30, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 30, 30, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    transform:
+        perspective(600px)
+        rotateX(58deg);
+
+    animation: gridMove 15s linear infinite;
+}
+
+@keyframes gridMove {
+    from {
+        transform:
+            perspective(600px)
+            rotateX(58deg)
+            translateY(0);
+    }
+
+    to {
+        transform:
+            perspective(600px)
+            rotateX(58deg)
+            translateY(55px);
+    }
+}
+
+/* Glow orbs */
+
+.glow {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 0, 0, 0.12),
+        transparent 68%
+    );
+
+    filter: blur(30px);
+
+    animation: glowMove 9s ease-in-out infinite alternate;
+}
+
+.glow.one {
+    left: -250px;
+    top: -260px;
+}
+
+.glow.two {
+    right: -280px;
+    bottom: -280px;
+    animation-delay: 2s;
+}
+
+@keyframes glowMove {
+    from {
+        transform: scale(0.9) translate(0, 0);
+    }
+
+    to {
+        transform: scale(1.15) translate(40px, -25px);
+    }
+}
+
+/* Particles */
+
+.particle {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: #ff2525;
+
+    box-shadow:
+        0 0 5px #ff1111,
+        0 0 14px rgba(255, 0, 0, 0.7);
+
+    opacity: 0;
+
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform:
+            translate3d(0, 110vh, 0)
+            scale(0.4);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.7;
+    }
+
+    50% {
+        transform:
+            translate3d(25px, 50vh, 0)
+            scale(1);
+    }
+
+    85% {
+        opacity: 0.35;
+    }
+
+    100% {
+        transform:
+            translate3d(-25px, -10vh, 0)
+            scale(0.5);
+
+        opacity: 0;
+    }
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card {
+    position: relative;
+    z-index: 10;
+
+    width: min(92%, 490px);
+
+    padding: 40px 32px 30px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 22, 24, 0.94),
+            rgba(5, 5, 6, 0.96)
+        );
+
+    border: 1px solid rgba(255, 35, 35, 0.25);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.85),
+        0 0 55px rgba(255, 0, 0, 0.08),
+        inset 0 1px rgba(255, 255, 255, 0.06);
+
+    animation:
+        cardAppear 0.9s
+        cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px)
+            scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* Animated border */
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -1px;
+    left: 12%;
+
+    width: 76%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff1111,
+            #ff6666,
+            #ff1111,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px #ff1111,
+        0 0 28px rgba(255, 0, 0, 0.5);
+
+    animation: topLine 3s ease-in-out infinite;
+}
+
+@keyframes topLine {
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scaleX(0.75);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+/* =====================================================
+   RUBY LOGO
+===================================================== */
+
+.logo-area {
+    position: relative;
+
+    width: 125px;
+    height: 125px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Outer glow */
+
+.ruby-glow {
+    position: absolute;
+
+    width: 105px;
+    height: 105px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 0, 0, 0.38),
+            rgba(255, 0, 0, 0.08) 40%,
+            transparent 70%
+        );
+
+    filter: blur(8px);
+
+    animation: rubyGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes rubyGlow {
+    0%,
+    100% {
+        transform: scale(0.85);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+/* Ruby */
+
+.ruby {
+    position: relative;
+
+    width: 76px;
+    height: 88px;
+
+    transform:
+        rotate(45deg)
+        skew(-5deg, -5deg);
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9b9b 0%,
+            #ff3b3b 16%,
+            #e00000 35%,
+            #a00000 58%,
+            #570000 82%,
+            #210000 100%
+        );
+
+    border:
+        2px solid rgba(255, 125, 125, 0.65);
+
+    box-shadow:
+        0 0 12px rgba(255, 0, 0, 0.85),
+        0 0 32px rgba(255, 0, 0, 0.5),
+        0 0 70px rgba(255, 0, 0, 0.22),
+        inset 8px 8px 13px rgba(255, 255, 255, 0.3),
+        inset -12px -14px 20px rgba(0, 0, 0, 0.55);
+
+    overflow: hidden;
+
+    animation: rubyFloat 3.2s ease-in-out infinite;
+}
+
+@keyframes rubyFloat {
+    0%,
+    100% {
+        transform:
+            rotate(45deg)
+            skew(-5deg, -5deg)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            rotate(45deg)
+            skew(-5deg, -5deg)
+            translateY(-7px);
+    }
+}
+
+/* Ruby facets */
+
+.ruby .facet1,
+.ruby .facet2,
+.ruby .facet3,
+.ruby .facet4 {
+    position: absolute;
+
+    pointer-events: none;
+}
+
+.ruby .facet1 {
+    left: 0;
+    top: 0;
+
+    width: 50%;
+    height: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.48),
+            rgba(255,255,255,0)
+        );
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+}
+
+.ruby .facet2 {
+    right: 0;
+    top: 0;
+
+    width: 50%;
+    height: 50%;
+
+    background:
+        linear-gradient(
+            225deg,
+            rgba(255,255,255,.22),
+            rgba(255,255,255,0)
+        );
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+}
+
+.ruby .facet3 {
+    left: 0;
+    bottom: 0;
+
+    width: 50%;
+    height: 50%;
+
+    background:
+        linear-gradient(
+            45deg,
+            rgba(40,0,0,.7),
+            rgba(255,0,0,.15)
+        );
+
+    clip-path: polygon(
+        0 100%,
+        100% 100%,
+        50% 0
+    );
+}
+
+.ruby .facet4 {
+    right: 0;
+    bottom: 0;
+
+    width: 50%;
+    height: 50%;
+
+    background:
+        linear-gradient(
+            315deg,
+            rgba(0,0,0,.65),
+            rgba(255,0,0,.2)
+        );
+
+    clip-path: polygon(
+        0 100%,
+        100% 100%,
+        50% 0
+    );
+}
+
+/* Ruby shine */
+
+.ruby-shine {
+    position: absolute;
+
+    width: 130px;
+    height: 16px;
+
+    left: -50px;
+    top: 20px;
+
+    transform: rotate(-45deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.75),
+            transparent
+        );
+
+    filter: blur(2px);
+
+    animation: rubyShine 3.5s ease-in-out infinite;
+}
+
+@keyframes rubyShine {
+    0% {
+        left: -100px;
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 0.8;
+    }
+
+    65% {
+        opacity: 0;
+    }
+
+    100% {
+        left: 100px;
+        opacity: 0;
+    }
+}
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.title {
+    text-align: center;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(26px, 7vw, 36px);
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #ffffff 35%,
+            #ff8a8a 62%,
+            #ff1616 100%
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(255, 0, 0, 0.2)
+        );
+
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%,
+    100% {
+        filter:
+            drop-shadow(
+                0 0 8px rgba(255, 0, 0, 0.12)
+            );
+    }
+
+    50% {
+        filter:
+            drop-shadow(
+                0 0 18px rgba(255, 0, 0, 0.3)
+            );
+    }
+}
+
+.subtitle {
+    margin-top: 10px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+
+    letter-spacing: 0.5px;
+}
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.divider {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 28px 0 20px;
+}
+
+.divider span {
+    height: 1px;
+    flex: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.1)
+        );
+}
+
+.divider span:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.1),
+            transparent
+        );
+}
+
+.divider b {
+    color: #ff3030;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+}
+
+/* =====================================================
+   KEY
+===================================================== */
+
+.key-label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #999;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+.key-box {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 6px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    transition:
+        border .3s,
+        box-shadow .3s,
+        transform .3s;
+}
+
+.key-box:hover {
+    border-color:
+        rgba(255, 40, 40, 0.4);
+
+    box-shadow:
+        0 0 25px rgba(255,0,0,.08);
+
+    transform: translateY(-1px);
+}
+
+.key-box:focus-within {
+    border-color:
+        rgba(255, 35, 35, .65);
+
+    box-shadow:
+        0 0 0 3px rgba(255,0,0,.05),
+        0 0 30px rgba(255,0,0,.12);
+}
+
+#keyInput {
+    width: 100%;
+    min-width: 0;
+
+    padding: 14px 11px;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: #fff;
+
+    font-family: "Outfit", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    text-overflow: ellipsis;
+}
+
+.copy-btn {
+    flex-shrink: 0;
+
+    padding: 14px 19px;
+
+    border: 0;
+    outline: 0;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    color: white;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3838,
+            #d00000 55%,
+            #9d0000
+        );
+
+    box-shadow:
+        0 5px 20px rgba(255,0,0,.2),
+        inset 0 1px rgba(255,255,255,.25);
+
+    transition:
+        transform .2s,
+        box-shadow .2s,
+        filter .2s;
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.12);
+
+    box-shadow:
+        0 8px 28px rgba(255,0,0,.36),
+        inset 0 1px rgba(255,255,255,.3);
+}
+
+.copy-btn:active {
+    transform: scale(.94);
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status {
+    height: 20px;
+
+    margin-top: 13px;
+
+    text-align: center;
+
+    color: #555;
+
+    font-size: 12px;
+
+    transition: .3s;
+}
+
+.status.success {
+    color: #ff3939;
+
+    text-shadow:
+        0 0 12px rgba(255,0,0,.4);
+
+    animation: success .35s ease;
+}
+
+@keyframes success {
+    from {
+        opacity: 0;
+        transform: translateY(5px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+    margin-top: 18px;
+    padding-top: 17px;
+
+    border-top:
+        1px solid rgba(255,255,255,.06);
+
+    text-align: center;
+
+    color: #444;
+
+    font-size: 10px;
+
+    letter-spacing: 1.2px;
+}
+
+.footer strong {
+    color: #9f1717;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 500px) {
+
+    .card {
+        width: 92%;
+        padding: 32px 19px 25px;
+        border-radius: 25px;
+    }
+
+    .logo-area {
+        transform: scale(.9);
+        margin-bottom: 14px;
+    }
+
+    .title {
+        font-size: 24px;
+        letter-spacing: 1.4px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .divider {
+        margin-top: 24px;
+    }
+
+    #keyInput {
+        font-size: 11px;
+        padding-left: 8px;
+    }
+
+    .copy-btn {
+        padding: 13px 13px;
+        font-size: 9px;
+    }
+}
+
+@media (max-height: 650px) {
+
+    .card {
+        transform: scale(.88);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="background">
+
+    <div class="grid"></div>
+
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN CARD
+===================================================== -->
+
+<div class="card">
+
+    <!-- Ruby Logo -->
+
+    <div class="logo-area">
+
+        <div class="ruby-glow"></div>
+
+        <div class="ruby">
+
+            <div class="facet1"></div>
+            <div class="facet2"></div>
+            <div class="facet3"></div>
+            <div class="facet4"></div>
+
+            <div class="ruby-shine"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Title -->
+
+    <h1 class="title">
+        Ruby Hub Key
+    </h1>
+
+    <p class="subtitle">
+        Your access key is ready
+    </p>
+
+
+    <!-- Divider -->
+
+    <div class="divider">
+
+        <span></span>
+
+        <b>KEY ACCESS</b>
+
+        <span></span>
+
+    </div>
+
+
+    <!-- Key -->
+
+    <label class="key-label">
+        YOUR KEY
+    </label>
+
+    <div class="key-box">
+
+        <input
+            id="keyInput"
+            type="text"
+            value="RubyHubHsiwhdibsb - Jajwjwooekdjdkdkd"
+            readonly
+        >
+
+        <button
+            id="copyButton"
+            class="copy-btn"
+            onclick="copyKey()"
+        >
+            COPY
+        </button>
+
+    </div>
+
+
+    <!-- Status -->
+
+    <div
+        id="status"
+        class="status"
+    >
+        Ready to copy
+    </div>
+
+
+    <!-- Footer -->
+
+    <div class="footer">
+
+        <strong>RUBY HUB</strong>
+
+        &nbsp;•&nbsp;
+
+        SECURE KEY SYSTEM
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+const background =
+    document.querySelector(".background");
+
+const particleCount = 80;
+
+for (let i = 0; i < particleCount; i++) {
+
+    const particle =
+        document.createElement("div");
+
+    particle.className = "particle";
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (5 + Math.random() * 9) + "s";
+
+    particle.style.animationDelay =
+        (-Math.random() * 12) + "s";
+
+    const size =
+        1 + Math.random() * 3;
+
+    particle.style.width =
+        size + "px";
+
+    particle.style.height =
+        size + "px";
+
+    background.appendChild(particle);
+}
+
+
+/* =====================================================
+   COPY KEY
+===================================================== */
+
+function copyKey() {
+
+    const input =
+        document.getElementById("keyInput");
+
+    const status =
+        document.getElementById("status");
+
+    const button =
+        document.getElementById("copyButton");
+
+    const key =
+        input.value;
+
+    if (!key) {
+        return;
+    }
+
+    /* Modern browser */
+
+    if (navigator.clipboard) {
+
+        navigator.clipboard
+            .writeText(key)
+            .then(showSuccess)
+            .catch(fallbackCopy);
+
+    } else {
+
+        fallbackCopy();
+
+    }
+
+
+    /* Fallback */
+
+    function fallbackCopy() {
+
+        input.focus();
+        input.select();
+
+        try {
+            document.execCommand("copy");
+            showSuccess();
+        } catch (error) {
+            status.textContent =
+                "Please copy the key manually";
+        }
+    }
+
+
+    /* Success */
+
+    function showSuccess() {
+
+        status.textContent =
+            "✓ Key copied successfully";
+
+        status.classList.add("success");
+
+        button.textContent =
+            "COPIED";
+
+        setTimeout(() => {
+
+            status.textContent =
+                "Ready to copy";
+
+            status.classList.remove("success");
+
+            button.textContent =
+                "COPY";
+
+        }, 2200);
+    }
+}
+
+
+/* =====================================================
+   SUBTLE MOUSE EFFECT
+===================================================== */
+
+const card =
+    document.querySelector(".card");
+
+document.addEventListener("mousemove", (event) => {
+
+    const x =
+        (event.clientX / window.innerWidth - 0.5);
+
+    const y =
+        (event.clientY / window.innerHeight - 0.5);
+
+    if (window.innerWidth > 700) {
+
+        card.style.transform =
+            `perspective(1000px)
+             rotateX(${y * -2}deg)
+             rotateY(${x * 2}deg)`;
+
+    }
+});
+
+document.addEventListener("mouseleave", () => {
+
+    card.style.transform =
+        "perspective(1000px) rotateX(0) rotateY(0)";
+
+});
+
+</script>
+
+</body>
+</html>
